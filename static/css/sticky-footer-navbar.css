@@ -1,0 +1,59 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+
+.testing_process_stages table td{
+    text-align: center;
+    vertical-align: middle
+}
+.testing_process_stages table th{
+    text-align: center;
+    vertical-align: middle
+}
+.testing_process_stages table td:last-child {
+    text-align: left;
+    vertical-align: middle
+}
+.testing_process_stages table th:last-child {
+    text-align: left;
+    vertical-align: middle
+}
+
+.tests_performed table td{
+    text-align: center;
+    vertical-align: middle
+}
+.tests_performed table th{
+    text-align: center;
+    vertical-align: middle
+}
+.td_success{
+    background-color:#66cc66 !important;
+    font-weight: 600;
+    color: white;
+    opacity: .7;
+}
+
+.td_fail{
+    background-color:#ff4000 !important;
+    font-weight: 600;
+    color: white;
+    opacity: .7;
+}
+
+.non_critical_test {
+    font-size: 1.5em; 
+    color: gray; 
+    opacity: 0.3;
+}
+
+.critical_test {
+    font-size: 1.5em; 
+    color: red; 
+}
+

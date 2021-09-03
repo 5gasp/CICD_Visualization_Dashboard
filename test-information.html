@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="Rafael Direito (rdireito@av.it.pt)" />
+        <title>5GASP CI/CD - Visualization Dashboard</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/" />
+
+        <!-- Bootstrap core CSS -->
+        <link href="static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="icon" type="image/png" href="static/img/cropped-favicon-32x32.png" sizes="32x32">
+
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+
+        <!-- Custom styles for this template -->
+        <link href="static/css/sticky-footer-navbar.css" rel="stylesheet" />
+    </head>
+
+    <body class="d-flex flex-column h-100">
+        <header>
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <img class="d-inline-block align-text-top" height="24" src="static/img/5GASPlogo-960x251.png"
+                        style="margin: auto" alt="5GASP Logo" />
+                    <a class="navbar-brand" style="margin-left: 10px" href="#">Test Visualization Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <!--
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            -->
+                        </ul>
+                        <form class="d-flex">
+                            <button class="btn btn-danger" type="submit">Log out</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Begin page content -->
+        <main class="flex-shrink-0">
+            <div class="container">
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Test Base Information</h4>
+                                <div class="card-text mt-4">
+                                    <span style="font-weight: 700;">Test Id: </span> <span>J834G0J</span>
+                                    <br>
+                                    <span style="font-weight: 700;">NetApp Id: </span> <span>NA001</span>
+                                    <br>
+                                    <span style="font-weight: 700;">Service Id: </span> <span>SD001_1</span>
+                                    <br>
+                                    <span style="font-weight: 700;">Test Started At: </span> <span> Sat Jul 23 02:16:57
+                                        2005 </span>
+                                    <br>
+                                    <span style="font-weight: 700;">Test Status: </span> <span
+                                        style="color: green; font-weight: 700;">
+                                        Passed </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Testing Process Stages</h4>
+                                <div class="card mt-4">
+                                    <div class="table-responsive testing_process_stages">
+                                        <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-1">Start Time</th>
+                                                    <th class="col-1">End Time</th>
+                                                    <th class="col-2">Stage Name</th>
+                                                    <th class="col-2">Stage Status</th>
+                                                    <th class="col-6">Observations</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>03/Sep/2021 14:38:01</td>
+                                                    <td>03/Sep/2021 14:41:22</td>
+                                                    <td>Setup Environment</td>
+                                                    <td class="td_success">Success</td>
+                                                    <td>No Observations</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>03/Sep/2021 14:41:22</td>
+                                                    <td>03/Sep/2021 14:42:27</td>
+                                                    <td>Obtain Tests</td>
+                                                    <td class="td_fail">Fail</td>
+                                                    <td> Running in Durability level: MAX_SURVIVABILITY
+                                                        org.codehaus.groovy.control.MultipleCompilationErrorsException:
+                                                        startup failed:
+                                                        WorkflowScript: 115: expecting '}', found '' @ line 115, column
+                                                        7.
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Tests Performed</h4>
+                                <div class="card mt-4">
+                                    <div class="table-responsive tests_performed ">
+                                        <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-3">Test Name</th>
+                                                    <th class="col-1">Critical?</th>
+                                                    <th class="col-1">Elapsed Time</th>
+                                                    <th class="col-1">Test Status</th>
+                                                    <th class="col-4">Test Description</th>
+                                                    <th class="col-1">Test Log</th>
+                                                    <th class="col-1">Test Report</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Transmission Speed</td>
+                                                    <td class="critical_test"><i class="fas fa-exclamation-circle"></i></td>
+                                                    <td>00:02:01</td>
+                                                    <td class="td_success">Passed</td>
+                                                    <td>Testing the transmission speed between OBU and vOBU</td>
+                                                    <td><a href="https://www.google.com">Test Log</a></td>
+                                                    <td><a href="https://www.google.com">Test Report</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bandwidth</td>
+                                                    <td class="non_critical_test"><i class="fas fa-exclamation-circle"></i></td>
+                                                    <td>00:00:59</td>
+                                                    <td class="td_fail">Failed</td>
+                                                    <td>Testing the bandwidth between OBU and vOBU</td>
+                                                    <td><a href="https://www.google.com">Test Log</a></td>
+                                                    <td><a href="https://www.google.com">Test Report</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Collected Metrics</h4>
+                                <div class="mt-4 row" >
+                                    <div class="col-12">
+                                        <p>
+                                            To get the metrics collected during the testing and validation process, please open Grafana's Dashboard.
+                                        </p>
+                                    </div>
+                                    <div class="col-4 offset-4 table-responsive tests_performed ">
+                                        <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-12" colspan=2>Grafana</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="col-4">URL</td>
+                                                    <td class="col-8"> <a target="_blank" href="http://10.0.13.132:3000/"> http://10.0.13.132:3000/</a></td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="col-4">Username</td>
+                                                    <td class="col-8">admin</td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="col-4">Password</td>
+                                                    <td class="col-8">admin</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Copyright ©2021 All rights reserved | 5GASP Project</span>
+            </div>
+        </footer>
+
+        <script src="static/assets/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
