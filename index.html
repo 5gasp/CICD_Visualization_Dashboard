@@ -13,18 +13,18 @@
 
   <body class="text-center">
     <main class="form-signin">
-    <form>
+    <form onsubmit="">
         <img class="mb-4 col-lg-12" src="static/img/5GASPlogo-960x251.png" alt="5GASP Logo" >
         
         <h4 class="mb-3 fw-normal">Test Visualization Dashboard</h4>
 
         <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput">
+        <input type="text" class="form-control" id="test_id_input">
         <label for="floatingInput">Test ID</label>
         </div>
         <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword">
-        <label for="floatingPassword">Security Token</label>
+        <input type="password" class="form-control" id="test_access_token_input">
+        <label for="floatingPassword">Access Token</label>
         </div>
 
         <div class="checkbox mb-3">
@@ -32,9 +32,15 @@
             <input type="checkbox" value="remember-me"> Remember me
         </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Get Test Outputs</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="return get_test_base_info(this);">Get Test Outputs</button>
         <p class="mt-5 mb-3 text-muted">&copy; 5GASP 2021</p>
     </form>
     </main>
+    <!-- Theme JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom JS -->
+    <script src="static/js/pages/index.js"></script>
+    <script src="static/js/utils.js"></script>
+    <script src="static/js/constants.js"></script>
   </body>
 </html>

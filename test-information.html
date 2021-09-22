@@ -9,8 +9,10 @@
         <title>5GASP CI/CD - Visualization Dashboard</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/" />
-
+        
         <!-- Bootstrap core CSS -->
+        <!-- Theme JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
         <link href="static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="icon" type="image/png" href="static/img/cropped-favicon-32x32.png" sizes="32x32">
@@ -61,7 +63,8 @@
                             -->
                         </ul>
                         <form class="d-flex">
-                            <button class="btn btn-danger" type="submit">Log out</button>
+                            <button class="btn btn-sm btn-success" type="button" onclick="return refresh_results();" style="margin-right:20px"> <i class="fa fa-sync" aria-hidden="true"></i> Refresh Results</button>
+                            <button class="btn btn-danger" type="submit" onclick="return logout()">Log out</button>
                         </form>
                     </div>
                 </div>
@@ -78,18 +81,19 @@
                             <div class="card-body">
                                 <h4 class="card-title">Test Base Information</h4>
                                 <div class="card-text mt-4">
-                                    <span style="font-weight: 700;">Test Id: </span> <span>J834G0J</span>
+                                    <span style="font-weight: 700;">Test Id: </span> <span id="base_info_test_id"></span>
                                     <br>
-                                    <span style="font-weight: 700;">NetApp Id: </span> <span>NA001</span>
+                                    <span style="font-weight: 700;">NetApp Id: </span> <span id="base_info_netapp_id"></span>
                                     <br>
-                                    <span style="font-weight: 700;">Service Id: </span> <span>SD001_1</span>
+                                    <span style="font-weight: 700;">Network Service Id: </span> <span id="base_info_network_service_id"></span>
                                     <br>
-                                    <span style="font-weight: 700;">Test Started At: </span> <span> Sat Jul 23 02:16:57
-                                        2005 </span>
+                                    <span style="font-weight: 700;">Testbed: </span> <span id="base_info_testbed"></span>
                                     <br>
-                                    <span style="font-weight: 700;">Test Status: </span> <span
-                                        style="color: green; font-weight: 700;">
-                                        Passed </span>
+                                    <span style="font-weight: 700;">Test Started At: </span> <span id="base_info_start_time"></span>
+                                    <br>
+                                    <span style="font-weight: 700;">Test Status: </span id="base_info_test_status"> 
+                                        <span style="color: green; font-weight: 700; display: none" id="base_info_test_passed"> Passed </span>
+                                        <span style="color: red; font-weight: 700; display: none;" id="base_info_test_failed"> Failed </span>
 
                                 </div>
                             </div>
@@ -104,33 +108,21 @@
                                         <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
                                             <thead>
                                                 <tr>
-                                                    <th class="col-1">Start Time</th>
-                                                    <th class="col-1">End Time</th>
+                                                    <th class="col-1">Timestamp</th>
                                                     <th class="col-2">Stage Name</th>
                                                     <th class="col-2">Stage Status</th>
                                                     <th class="col-6">Observations</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="testing_process_status_tbody">
+                                                <!--
                                                 <tr>
                                                     <td>03/Sep/2021 14:38:01</td>
-                                                    <td>03/Sep/2021 14:41:22</td>
                                                     <td>Setup Environment</td>
                                                     <td class="td_success">Success</td>
                                                     <td>No Observations</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>03/Sep/2021 14:41:22</td>
-                                                    <td>03/Sep/2021 14:42:27</td>
-                                                    <td>Obtain Tests</td>
-                                                    <td class="td_fail">Fail</td>
-                                                    <td> Running in Durability level: MAX_SURVIVABILITY
-                                                        org.codehaus.groovy.control.MultipleCompilationErrorsException:
-                                                        startup failed:
-                                                        WorkflowScript: 115: expecting '}', found '' @ line 115, column
-                                                        7.
-                                                    </td>
-                                                </tr>
+                                                -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -148,33 +140,26 @@
                                             <thead>
                                                 <tr>
                                                     <th class="col-3">Test Name</th>
-                                                    <th class="col-1">Critical?</th>
-                                                    <th class="col-1">Elapsed Time</th>
+                                                    <th class="col-1">Start</th>
+                                                    <th class="col-1">End</th>
                                                     <th class="col-1">Test Status</th>
                                                     <th class="col-4">Test Description</th>
                                                     <th class="col-1">Test Log</th>
                                                     <th class="col-1">Test Report</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tests_performed_tbody">
+                                                <!--
                                                 <tr>
                                                     <td>Transmission Speed</td>
-                                                    <td class="critical_test"><i class="fas fa-exclamation-circle"></i></td>
+                                                    <td>00:02:01</td>
                                                     <td>00:02:01</td>
                                                     <td class="td_success">Passed</td>
                                                     <td>Testing the transmission speed between OBU and vOBU</td>
                                                     <td><a href="https://www.google.com">Test Log</a></td>
                                                     <td><a href="https://www.google.com">Test Report</a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Bandwidth</td>
-                                                    <td class="non_critical_test"><i class="fas fa-exclamation-circle"></i></td>
-                                                    <td>00:00:59</td>
-                                                    <td class="td_fail">Failed</td>
-                                                    <td>Testing the bandwidth between OBU and vOBU</td>
-                                                    <td><a href="https://www.google.com">Test Log</a></td>
-                                                    <td><a href="https://www.google.com">Test Report</a></td>
-                                                </tr>
+                                                -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -230,7 +215,11 @@
             </div>
         </footer>
 
-        <script src="static/assets/dist/js/bootstrap.bundle.min.js"></script>
+              
+        <!-- Custom JS -->
+        <script src="static/js/pages/test-information.js"></script>
+        <script src="static/js/utils.js"></script>
+        <script src="static/js/constants.js"></script>
     </body>
 
 </html>
