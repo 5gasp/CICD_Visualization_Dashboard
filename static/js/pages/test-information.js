@@ -146,8 +146,10 @@ function add_process_stage_row(table_id, timestamp, stage_name, success){
 function add_test_performed_row(table_id, test_name, description, start, end, success){
     start = start.split(" ");
     end = end.split(" ");
-    
+    let id = test_name.split("-test-id-")[1]
+    test_name = test_name.split("-test-id-")[0]
     let row = `<tr>
+        <td>${id}</td>
         <td>${test_name}</td>
         <td>${start[0]}<br>${start[1]}</td>
         <td>${end[0]}<br>${end[1]}</td>
