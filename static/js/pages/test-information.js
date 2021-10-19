@@ -147,10 +147,10 @@ function add_test_performed_row(table_id, test_name, description, start, end, su
     start = start.split(" ");
     end = end.split(" ");
     let id = test_name.split("-test-id-")[1]
-    test_name = test_name.split("-test-id-")[0]
+    test_name_simple = test_name.split("-test-id-")[0]
     let row = `<tr>
         <td>${id}</td>
-        <td>${test_name}</td>
+        <td>${test_name_simple}</td>
         <td>${start[0]}<br>${start[1]}</td>
         <td>${end[0]}<br>${end[1]}</td>
     `
