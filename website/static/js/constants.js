@@ -1,7 +1,3 @@
-// API URLs
-let base_api = "http://127.0.0.1:8000";
-
-
 const rest_api = {
 	test_base_info: `${base_api}/gui/test-base-information`,
     test_stage_status: `${base_api}/gui/testing-process-status`,
