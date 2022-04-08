@@ -74,8 +74,31 @@ function navigateTo(url) {
     window.location.href = url;
 }
 
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    var items = location.search.substr(1).split("&");
+    for (var index = 0; index < items.length; index++) {
+        tmp = items[index].split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    }
+    return result;
+}
+
+function hasCredentialsParameters(arrParameters){
+    for (const parameter of arrParameters){
+        if( findGetParameter(parameter) == null){
+            return false;
+        } 
+
+    }
+    return true;
+}
 function checkLogin() {
     if (!hasCookie("access_token") || !hasCookie("test_id")) {
-        navigateTo(pages.index);
+        if(!hasCredentialsParameters(['access_token','test_id'])){
+            navigateTo(pages.index);
+        }
+        
     }
 }

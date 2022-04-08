@@ -1,6 +1,12 @@
 // On Load, load CUs
+var test_id;
+var access_token;
 window.onload = function () {
     checkLogin();
+    test_id = findGetParameter("test_id");
+    access_token = findGetParameter("access_token");
+    if(test_id == null) test_id = getCookie('test_id');
+    if(access_token == null) access_token = getCookie('access_token');
     get_test_base_info();
     get_test_process_stages();
     get_tests_performed();
@@ -23,13 +29,14 @@ setInterval(refresh_results, 10000);
 let num_test_process_stages = 0;
 let num_performed_tests = 0;
 
+
 function get_test_base_info() {
     $.ajax({
 			type: "GET",
 			url: rest_api.test_base_info,
 			data: {
-                "test_id": getCookie("test_id"),
-                "access_token": getCookie("access_token"),
+                "test_id": test_id,
+                "access_token": access_token,
             },
 		})
 		.done(function (response) {
@@ -62,8 +69,8 @@ function get_test_process_stages() {
 			type: "GET",
 			url: rest_api.test_stage_status,
 			data: {
-                "test_id": getCookie("test_id"),
-                "access_token": getCookie("access_token"),
+                "test_id": test_id,
+                "access_token": access_token,
             },
 		})
 		.done(function (response) {
@@ -94,8 +101,8 @@ function get_tests_performed() {
 			type: "GET",
 			url: rest_api.tests_performed,
 			data: {
-                "test_id": getCookie("test_id"),
-                "access_token": getCookie("access_token"),
+                "test_id": test_id,
+                "access_token": access_token,
             },
 		})
 		.done(function (response) {
