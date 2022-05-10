@@ -167,8 +167,8 @@ function add_test_performed_row(table_id, test_name, description, start, end, su
         row += `<td class="td_fail">Failed</td>`;
 
     row += `<td>${description}</td>`;
-    row += `<td><a href="${rest_api.test_files}?file_name=log.html&test_id=${getCookie("test_id")}&test_name=${test_name}&access_token=${getCookie("access_token")}" target="_blank">Test Log</a></td>`;
-    row += `<td><a href="${rest_api.test_files}?file_name=report.html&test_id=${getCookie("test_id")}&test_name=${test_name}&access_token=${getCookie("access_token")}" target="_blank">Test Report</a></td>`;
+    row += `<td><a href="${rest_api.test_files}?file_name=log.html&test_id=${test_id}&test_name=${test_name}&access_token=${access_token}" target="_blank">Test Log</a></td>`;
+    row += `<td><a href="${rest_api.test_files}?file_name=report.html&test_id=${test_id}&test_name=${test_name}&access_token=${access_token}" target="_blank">Test Report</a></td>`;
     
     row += '</tr>'
     $(table_id).append(row);
