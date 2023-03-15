@@ -109,6 +109,18 @@ function get_tests_performed() {
             if (response.success){
                 if (response.data.length != num_performed_tests){
                     $("#tests_performed_tbody").empty();
+
+                    
+                    response.data.sort(function(a, b) {
+                        var aID = parseInt(a.performed_test.split("-test-id-")[1]);
+                        var bID = parseInt(b.performed_test.split("-test-id-")[1]);
+                        console.log(aID, bID);
+                        // Compare the 2 dates
+                        if (aID < bID) return -1;
+                        if (aID > bID) return 1;
+                        return 0;
+                      });
+
                     for (let test_performed of response.data) { 
                         add_test_performed_row("#tests_performed_tbody", test_performed.performed_test, test_performed.description, test_performed.start_time, test_performed.end_time, test_performed.success)
                     }
