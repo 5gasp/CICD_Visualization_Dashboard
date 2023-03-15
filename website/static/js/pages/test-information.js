@@ -151,24 +151,41 @@ function add_process_stage_row(table_id, timestamp, stage_name, success){
 }
 
 function add_test_performed_row(table_id, test_name, description, start, end, success){
-    start = start.split(" ");
-    end = end.split(" ");
+
     let id = test_name.split("-test-id-")[1]
-    test_name_simple = test_name.split("-test-id-")[0]
+    let test_name_simple = test_name.split("-test-id-")[0]
+
+    if (success == null){
+        start = end = ["-", ""];
+    }
+    else{
+        start = start.split(" ");
+        end = end.split(" ");
+    }
+    
     let row = `<tr>
         <td>${id}</td>
         <td>${test_name_simple}</td>
         <td>${start[0]}<br>${start[1]}</td>
         <td>${end[0]}<br>${end[1]}</td>
     `
-    if(success)
-        row += `<td class="td_success">Passed</td>`;
-    else
-        row += `<td class="td_fail">Failed</td>`;
+    if(success == null){
+        row += `<td class="td_not_executed">Not Executed</td>`;
+        row += `<td>${description}</td>`;
+        row += `<td class="td_not_executed_soft">No Test Log</td>`;
+        row += `<td class="td_not_executed_soft">No Test Report</td>`;
+    } else {
+        if (success) {
+            row += `<td class="td_success">Passed</td>`;
+        } else{
+            row += `<td class="td_fail">Failed</td>`;
+        }
+        row += `<td>${description}</td>`;
+        row += `<td><a href="${rest_api.test_files}?file_name=log.html&test_id=${test_id}&test_name=${test_name}&access_token=${access_token}" target="_blank">Test Log</a></td>`;
+        row += `<td><a href="${rest_api.test_files}?file_name=report.html&test_id=${test_id}&test_name=${test_name}&access_token=${access_token}" target="_blank">Test Report</a></td>`;
+    
+    }
 
-    row += `<td>${description}</td>`;
-    row += `<td><a href="${rest_api.test_files}?file_name=log.html&test_id=${test_id}&test_name=${test_name}&access_token=${access_token}" target="_blank">Test Log</a></td>`;
-    row += `<td><a href="${rest_api.test_files}?file_name=report.html&test_id=${test_id}&test_name=${test_name}&access_token=${access_token}" target="_blank">Test Report</a></td>`;
     
     row += '</tr>'
     $(table_id).append(row);

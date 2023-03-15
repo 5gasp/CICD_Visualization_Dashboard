@@ -46,6 +46,19 @@ main > .container {
     opacity: .7;
 }
 
+.td_not_executed{
+    background-color:#48403d !important;
+    font-weight: 600;
+    color: white;
+    opacity: .7;
+}
+
+.td_not_executed_soft{
+    background-color:#898989 !important;
+    font-weight: 400;
+    color: white;
+    opacity: .7;
+}
 .non_critical_test {
     font-size: 1.5em; 
     color: gray; 
